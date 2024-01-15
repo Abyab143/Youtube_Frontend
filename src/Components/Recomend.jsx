@@ -12,6 +12,7 @@ const VidioWrappper = styled.div``;
 const VidioFrame = styled.img`
   height:100px;
   width: 150px;
+   border-radius: 10px;
 `;
 const Text = styled.div`
 margin-left:5px;
