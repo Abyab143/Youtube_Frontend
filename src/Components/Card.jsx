@@ -53,7 +53,7 @@ export default function Card({video}) {
 
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`/api/auth/getuser/${video.userId}`);
+      const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${video.userId}`);
       setChannel(res.data);
     };
     fetchChannel();
