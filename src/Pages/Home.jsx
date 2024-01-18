@@ -13,7 +13,7 @@ function Home({type}) {
   const [videos, setVideos] = useState([]);
   useEffect(() => {
     const fetchVido = async () => {
-      const res = await axios.get(`/api/vidio/${type}`);
+      const res = await axios.get(`https://abyabtube.onrender.com/api/vidio/${type}`);
       setVideos(res.data);
     };
     fetchVido();
