@@ -144,7 +144,7 @@ const Create = ({ setopen }) => {
   const handleUpload = async (e) => {
     e.preventDefault();
     console.log(title,description,imgurl,vidiourl,tags);
-    const res = await axios.post("/api/vidio", {
+    const res = await axios.post("https://abyabtube.onrender.com/api/vidio", {
       title: title,
       description: description,
       thumbnail: imgurl,
