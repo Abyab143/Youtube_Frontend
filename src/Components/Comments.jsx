@@ -42,7 +42,7 @@ const Comments = ({ vidio, path }) => {
   const [fetchComent, setComo] = useState([]);
 
   const FetchComent = async () => {
-    let data = await axios.get(`/api/comments/${path}`);
+    let data = await axios.get(`https://abyabtube.onrender.com/api/comments/${path}`);
     // console.log(data.data);
     setComo(data.data);
   };
@@ -56,7 +56,7 @@ const Comments = ({ vidio, path }) => {
   const PostComments = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/addcoment", {
+      const res = await axios.post("https://abyabtube.onrender.com/api/addcoment", {
         VidioId: vidio._id,
         userId: auth.user._id,
         Comment: coment,
