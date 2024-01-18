@@ -37,15 +37,15 @@ function Recomend({setVidio,content,setChannel}) {
   const [curchannel, setcurChannel] = useState({});
 
   const setCurVidio = async()=>{
-    let video = await axios.get(`/api/vidio/find/${content._id}`);
+    let video = await axios.get(`https://abyabtube.onrender.com/api/vidio/find/${content._id}`);
     setVidio(video.data);
-    const res = await axios.get(`/api/auth/getuser/${content.userId}`);
+    const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${content.userId}`);
     setChannel(res.data);
   }
 
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`/api/auth/getuser/${content.userId}`);
+      const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${content.userId}`);
       setcurChannel(res.data);
     };
     fetchChannel();
