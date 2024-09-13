@@ -96,7 +96,7 @@ const Sign = () => {
       .then((result) => {
         const sign = async () => {
           const res = await axios
-            .post("/api/auth/google", {
+            .post("https://abyabtube.onrender.com/api/auth/google", {
               name: result.user.displayName,
               email: result.user.email,
               img: result.user.photoURL,
@@ -118,7 +118,7 @@ const Sign = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/signup", {
+      const res = await axios.post("https://abyabtube.onrender.com/api/auth/signup", {
         name,
         email,
         password,
