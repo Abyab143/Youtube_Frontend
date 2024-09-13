@@ -38,7 +38,7 @@ function Recomend({content})
   const [curchannel, setcurChannel] = useState({});
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`/api/auth/getuser/${content.userId}`);
+      const res = await axios.get(`https://abyabtube.onrender.com/auth/getuser/${content.userId}`);
       setcurChannel(res.data);
     };
     fetchChannel();
