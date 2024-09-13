@@ -100,9 +100,9 @@ function Video() {
   }, [path]);
 
   const fetchChannel = async () => {
-    let video = await axios.get(`https://abyabtube.onrender.com/vidio/find/${path}`);
+    let video = await axios.get(`https://abyabtube.onrender.com/api/vidio/find/${path}`);
     setVidio(video.data);
-    const res = await axios.get(`https://abyabtube.onrender.com/auth/getuser/${video.data.userId}`);
+    const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${video.data.userId}`);
     setChannel(res.data);
   };
   const Subscription = async () => {
