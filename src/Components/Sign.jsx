@@ -80,7 +80,7 @@ const Sign = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/signin", { email, password });
+      const res = await axios.post("https://abyabtube.onrender.com/auth/signin", { email, password });
       auth.setUsername(res.data.name);
       alert("Login success");
       app.setIsAuthenticated(true);
