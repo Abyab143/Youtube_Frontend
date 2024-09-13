@@ -43,7 +43,7 @@ const Comment = ({comment}) => {
 
   useEffect(() => {
     const fetchComment = async () => {
-      const res = await axios.get(`https://abyabtube.onrender.com/auth/getuser/${comment.userId}`);
+      const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${comment.userId}`);
       setChannel(res.data)
     };
     fetchComment();
