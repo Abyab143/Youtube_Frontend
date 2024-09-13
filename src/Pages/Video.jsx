@@ -92,27 +92,24 @@ function Video() {
   const auth = useContext(context);
   useEffect(() => {
     const fetchReco = async () => {
-      const res = await axios.get(`https://abyabtube.onrender.com/api/vidio/random`);
+      const res = await axios.get(`/api/vidio/random`);
       setrecomend(res.data);
     };
     fetchReco();
     fetchChannel();
-  }, []);
+  }, [path]);
 
   const fetchChannel = async () => {
-    let video = await axios.get(`https://abyabtube.onrender.com/api/vidio/find/${path}`);
+    let video = await axios.get(`/api/vidio/find/${path}`);
     setVidio(video.data);
-    const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${video.data.userId}`);
+    const res = await axios.get(`/api/auth/getuser/${video.data.userId}`);
     setChannel(res.data);
   };
-
   const Subscription = async () => {
     auth.user.subscribedUsers.includes(channel._id)
-      ? await axios.put(`https://abyabtube.onrender.com/api/auth/unsub/${channel._id}`)
-      : await axios.put(`https://abyabtube.onrender.com/api/auth/sub/${channel._id}`);
-    fetchChannel();
-    return;
-   
+      ? await axios.put(`/api/auth/unsub/${channel._id}`)
+      : await axios.put(`/api/auth/sub/${channel._id}`);
+      fetchChannel();
   };
 
   return (
@@ -148,8 +145,6 @@ function Video() {
           <Recomend
             key={content._id}
             content={content}
-            setVidio={setVidio}
-            setChannel={setChannel}
           />
         ))}
         ;
