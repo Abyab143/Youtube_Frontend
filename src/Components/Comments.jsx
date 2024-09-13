@@ -42,7 +42,7 @@ const Comments = ({ vidio, path }) => {
   const [fetchComent, setComo] = useState([]);
 
   const FetchComent = async () => {
-    let data = await axios.get(`https://abyabtube.onrender.com/comments/${path}`);
+    let data = await axios.get(`https://abyabtube.onrender.com/api/comments/${path}`);
     // console.log(data.data);
     setComo(data.data);
   };
