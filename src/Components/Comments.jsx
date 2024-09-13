@@ -56,7 +56,7 @@ const Comments = ({ vidio, path }) => {
   const PostComments = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://abyabtube.onrender.com/addcoment", {
+      const res = await axios.post("https://abyabtube.onrender.com/api/addcoment", {
         VidioId: vidio._id,
         userId: auth.user._id,
         Comment: coment,
