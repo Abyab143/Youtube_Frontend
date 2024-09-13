@@ -6,17 +6,17 @@ import axios from "axios";
 
 const Container = styled.div`
   display: flex;
-  margin-top:10px;
+  margin-top: 10px;
 `;
 const VidioWrappper = styled.div``;
 const VidioFrame = styled.img`
-  height:100px;
+  height: 100px;
   width: 150px;
-   border-radius: 10px;
+  border-radius: 10px;
 `;
 const Text = styled.div`
-margin-left:5px;
-padding:10px;
+  margin-left: 5px;
+  padding: 10px;
 `;
 const Title = styled.div`
   font-size: 18px;
@@ -27,41 +27,35 @@ const Views = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 const ChannelName = styled.div`
-font-size: 18px;
-font-weight: 400;
-margin-top:5px 0px 5px 0px;
-color: ${({ theme }) => theme.textSoft};
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 5px 0px 5px 0px;
+  color: ${({ theme }) => theme.textSoft};
 `;
 
-function Recomend({setVidio,content,setChannel}) {
+function Recomend({content}) 
+{
   const [curchannel, setcurChannel] = useState({});
-
-  const setCurVidio = async()=>{
-    let video = await axios.get(`https://abyabtube.onrender.com/api/vidio/find/${content._id}`);
-    setVidio(video.data);
-    const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${content.userId}`);
-    setChannel(res.data);
-  }
-
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`https://abyabtube.onrender.com/api/auth/getuser/${content.userId}`);
+      const res = await axios.get(`/api/auth/getuser/${content.userId}`);
       setcurChannel(res.data);
     };
     fetchChannel();
   }, []);
   return (
-    <Container onClick={setCurVidio}>
-      <VidioWrappper>
-        <VidioFrame src={content.thumbnail}/>
-      </VidioWrappper>
-      <Text id="text">
-        <Title>{content.title}</Title>
-        <ChannelName>{curchannel.name}</ChannelName>
-        <Views>{content.views}-views</Views>
-      </Text>
-    </Container>
-    
+    <Link to={`/video/${content._id}`} style={{ textDecoration: "none" }}>
+      <Container>
+        <VidioWrappper>
+          <VidioFrame src={content.thumbnail} />
+        </VidioWrappper>
+        <Text id="text">
+          <Title>{content.title}</Title>
+          <ChannelName>{curchannel.name}</ChannelName>
+          <Views>{content.views}-views</Views>
+        </Text>
+      </Container>
+    </Link>
   );
 }
 
